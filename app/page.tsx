@@ -40,7 +40,7 @@ export default function Home() {
   );
   console.log(currentColor);
   return (
-    <div className="p-4 ">
+    <div>
       {weather && (
         <div
           className={`flex flex-col gap-8 transition-transform duration-500 `}
