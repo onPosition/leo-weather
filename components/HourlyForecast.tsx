@@ -25,8 +25,8 @@ function HourlyForecastCard({ data }: HourlyForecastCardProps) {
 
 export default function HourlyForecast({ data }: HourlyForecastProps) {
   return (
-    <div>
-      <h3>Today</h3>
+    <div className="m-4 mr-0">
+      <h3>Hourly Weather</h3>
       <div className="flex max-w-full gap-4 overflow-scroll no-scrollbar">
         {data.map((item: HourlyItem) => (
           <HourlyForecastCard key={item.timestamp} data={item} />
