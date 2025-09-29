@@ -24,11 +24,11 @@ export default function Card({
   const variants: Record<string, string> = {
     default: "rounded-4xl",
     alert:
-      "rounded-2xl px-4 py-2 bg-card-transparent m-auto w-fit text-sm text-[#C4F67C] mb-2",
+      "rounded-2xl px-4 py-2 bg-card-transparent m-auto w-fit text-center text-sm text-[#C4F67C] mb-2",
     weatherFeature: "bg-card-transparent flex  gap-2 text-xs p-2 rounded-2xl",
     hourlyIcon:
       "flex items-center justify-center bg-card-transparent flex p-2 rounded-xl ",
-    background: "rounded-4xl text-white p-4",
+    background: "rounded-4xl text-white p-4 m-2 mt-0",
   };
 
   return (

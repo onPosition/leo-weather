@@ -33,8 +33,8 @@ export default function CurrentWeather({
           <WeatherIcon weatherCode={weatherCode} colored={true} />
         </div>
         <h1 className="leading-none">{temperature.toFixed(0)}°</h1>
-        <p className="text-gray-300">
-          Feels like:
+        <p className="text-white/60">
+          Feels like
           <br />
           <span className="text-xl">{temperatureApparent.toFixed(0)}°</span>
         </p>
