@@ -1,6 +1,5 @@
 import { useLocation } from "@/app/storage/LocationContext";
 
-// Типы для возвращаемых значений
 type WeekdayResult = {
   day: string;
   date: string;
@@ -8,13 +7,12 @@ type WeekdayResult = {
 
 type StringResult = string;
 
-// Перегрузка функции:
-// 1. Когда format === 'weekday', возвращается объект WeekdayResult
+// Function overload:
+// 1. When format === 'weekday', returns an object of type WeekdayResult
 function formatTime(dateString: string, format: "weekday"): WeekdayResult;
-// 2. Для всех остальных форматов возвращается строка
+// 2. For all other formats, returns a string
 function formatTime(dateString: string, format: string): StringResult;
 
-// Реализация функции
 function formatTime(
   dateString: string,
   format: string

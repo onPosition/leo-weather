@@ -45,7 +45,6 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
       }
 
       try {
-        console.log("Fetching location by IP...");
         const locationFromIp = await fetchLocationByIp();
         setCurrentLocation(locationFromIp);
       } catch (error) {

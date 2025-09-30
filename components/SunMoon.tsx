@@ -4,7 +4,6 @@ interface SunMoonProps {
 }
 
 const SunMoonArc = ({ sunProgress, moonProgress }: SunMoonProps) => {
-  console.log(sunProgress, moonProgress);
   const cx = 100;
   const cy = 200;
   const rSun = 180;
@@ -33,6 +32,7 @@ const SunMoonArc = ({ sunProgress, moonProgress }: SunMoonProps) => {
         fill="none"
         stroke="#fff"
         strokeWidth="0.5"
+        opacity={isSunVisible ? 1 : 0.25}
         strokeDasharray={isSunVisible ? "none" : "4 2"}
       />
       <path
@@ -42,14 +42,23 @@ const SunMoonArc = ({ sunProgress, moonProgress }: SunMoonProps) => {
         fill="none"
         stroke="#fff"
         strokeWidth="0.5"
+        opacity={isMoonVisible ? 1 : 0.25}
         strokeDasharray={isMoonVisible ? "none" : "4 2"}
       />
 
       {/* Sun */}
-      {isSunVisible && <circle cx={sunX} cy={sunY} r="8" fill="#FFD700" />}
+      {isSunVisible && <circle cx={sunX} cy={sunY} r="6" fill="#FFD700" />}
 
       {/* Moon */}
-      {isMoonVisible && <circle cx={moonX} cy={moonY} r="6" fill="#E0E0FF" />}
+      {isMoonVisible && (
+        <image
+          href="/moon.svg"
+          x={moonX - 4}
+          y={moonY - 4}
+          width="8"
+          height="8"
+        />
+      )}
     </svg>
   );
 };
