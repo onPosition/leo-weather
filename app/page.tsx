@@ -40,7 +40,7 @@ export default function Home() {
   );
   console.log(currentColor);
   return (
-    <div>
+    <div className="mobile-only">
       {weather && (
         <div
           className={`flex flex-col gap-8 transition-transform duration-500 `}
