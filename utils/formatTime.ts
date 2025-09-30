@@ -45,8 +45,7 @@ function formatTime(
       }).format(dateObject);
 
     case "weekday":
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      const today = new Date();
 
       const formattedDate = new Intl.DateTimeFormat("en-GB", {
         day: "numeric",
@@ -58,8 +57,8 @@ function formatTime(
         weekday: "long",
       }).format(dateObject);
 
-      if (dateObject.toDateString() === tomorrow.toDateString()) {
-        return { day: "Tomorrow", date: formattedDate };
+      if (dateObject.toDateString() === today.toDateString()) {
+        return { day: "Today", date: formattedDate };
       }
       return { day: dayName, date: formattedDate };
 
