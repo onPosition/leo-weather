@@ -38,7 +38,6 @@ export default function Home() {
     weather.current.weatherCode,
     weather.hourly[0].timestamp
   );
-  console.log(currentColor);
   return (
     <div className="mobile-only">
       {weather && (

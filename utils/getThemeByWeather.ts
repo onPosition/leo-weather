@@ -37,7 +37,6 @@ export default function getThemeByWeatherCode(
   const date = new Date(timestamp);
   const hours = date.getHours();
   const isNightTime = hours >= 19 || hours < 6;
-  console.log(hours);
 
   if (isNightTime) {
     return "#2B2A34";

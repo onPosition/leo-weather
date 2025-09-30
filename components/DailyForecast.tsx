@@ -13,7 +13,6 @@ interface DailyForecastCardProps {
 
 function DailyForecastCard({ data, isFirst }: DailyForecastCardProps) {
   const formattedTime = formatTime(data.timestamp, "weekday");
-  console.log(data);
   return (
     <div className="flex items-center justify-between rounded-2xl">
       <div className="flex items-center gap-2">
@@ -45,7 +44,7 @@ function DailyForecastCard({ data, isFirst }: DailyForecastCardProps) {
 
 export default function DailyForecast({ data }: DailyForecastProps) {
   return (
-    <section className="m-4">
+    <section className="m-4 mt-0">
       <h3>7-Day Forecast</h3>
       <div className="flex flex-col max-w-full gap-2 overflow-scroll">
         {data.map((item: DailyItem, idx) => (

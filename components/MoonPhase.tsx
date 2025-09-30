@@ -72,7 +72,7 @@ export default function MoonPhase({ className }: { className?: string }) {
   if (!phase) return null;
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-2 opacity-80", className)}>
       <img
         src={`/icons/${phase.icon}`}
         alt={phase.label}
