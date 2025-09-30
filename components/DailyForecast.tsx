@@ -28,11 +28,15 @@ function DailyForecastCard({ data, isFirst }: DailyForecastCardProps) {
       <div className="flex gap-8">
         <ul className="text-center">
           <li className={isFirst ? "text-gray-400" : "invisible"}>Day</li>
-          <li className="">{data.temperatureMin.toFixed(0)}°</li>
+          <li className={`${!isFirst && "-mt-4"}`}>
+            {data.temperatureMax.toFixed(0)}°
+          </li>
         </ul>
         <ul className="text-center">
           <li className={isFirst ? "text-gray-400" : "invisible"}>Night</li>
-          <li className="text-gray-400">{data.temperatureMax.toFixed(0)}°</li>
+          <li className={`${!isFirst && "-mt-4"} text-gray-400`}>
+            {data.temperatureMin.toFixed(0)}°
+          </li>
         </ul>
       </div>
     </div>
@@ -41,8 +45,8 @@ function DailyForecastCard({ data, isFirst }: DailyForecastCardProps) {
 
 export default function DailyForecast({ data }: DailyForecastProps) {
   return (
-    <section>
-      <h3>7-day forecast</h3>
+    <section className="m-4">
+      <h3>7-Day Forecast</h3>
       <div className="flex flex-col max-w-full gap-2 overflow-scroll">
         {data.map((item: DailyItem, idx) => (
           <DailyForecastCard
