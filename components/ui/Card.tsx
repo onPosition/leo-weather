@@ -28,7 +28,7 @@ export default function Card({
     weatherFeature: "bg-card-transparent flex  gap-2 text-xs p-2 rounded-2xl",
     hourlyIcon:
       "flex items-center justify-center bg-card-transparent flex p-2 rounded-xl ",
-    background: "rounded-4xl text-white p-4 m-2 mt-0",
+    background: "rounded-4xl text-white p-4 m-2",
   };
 
   return (

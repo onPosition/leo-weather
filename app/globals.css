@@ -35,6 +35,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Jost";
+  @media (min-width: 640px) {
+    background-color: #e2e2e2;
+  }
+}
+.mobile-only {
+  @media (min-width: 640px) {
+    max-width: 340px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #8e8e8e;
+  }
 }
 
 h1 {
