@@ -117,13 +117,17 @@ const AITipButton: React.FC<AITipButtonProps> = ({
         >
           {isLoading && <p className="animate-pulse">Generating tip...</p>}
           {error && <p className="text-red-400">{error}</p>}
-          {aiTip && <p>{aiTip}</p>}
-          <button
-            className="mt-2 m-auto w-fit bg-card-transparent py-1 px-4 rounded-xl"
-            onClick={() => setShowTooltip(false)}
-          >
-            Okay 👍
-          </button>
+          {aiTip && (
+            <>
+              <p>{aiTip}</p>
+              <button
+                className="mt-2 m-auto w-fit bg-card-transparent py-1 px-4 rounded-xl"
+                onClick={() => setShowTooltip(false)}
+              >
+                Got it
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>
