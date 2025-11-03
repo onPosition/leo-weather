@@ -12,7 +12,7 @@
   --background: #fcf4dc;
   --background: #ffffff;
   --cardbg: #2b2a34;
-  --cardbg-transparent: #7d7d7d36;
+  --cardbg-transparent: #d4d4d436;
   --foreground: #171717;
 }
 
@@ -30,11 +30,21 @@
     --foreground: #ededed; */
   }
 }
-
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Jost";
+  overscroll-behavior: none;
+  touch-action: pan-x pan-y;
+  -webkit-touch-callout: none;
   @media (min-width: 640px) {
     background-color: #e2e2e2;
   }
@@ -48,7 +58,7 @@ body {
   }
 }
 
-h1 {
+h1:not(header h1) {
   font-size: 4rem;
   font-weight: 800;
   margin-left: 20px;
@@ -87,4 +97,13 @@ h3 {
 }
 .cls-3 {
   opacity: 0.15;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }

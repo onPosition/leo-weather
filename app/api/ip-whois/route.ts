@@ -8,10 +8,12 @@ export async function GET(req: Request) {
   const data = await res.json();
 
   if (!data.success) {
-    return NextResponse.json(
-      { error: "Failed to fetch location" },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      city: "New York City",
+      lat: 40.7128,
+      lon: -74.006,
+      timezone: { name: "America/New_York" },
+    });
   }
 
   return NextResponse.json({

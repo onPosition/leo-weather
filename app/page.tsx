@@ -17,7 +17,6 @@ import LoadingScreen from "@/components/LoadingScreen";
 import colorsByWeatherCode from "@/utils/getThemeByWeather";
 export default function Home() {
   const [weather, setWeather] = useState<TransformedWeather | null>(null);
-  const { isLocationSelectOpen } = useUI();
   const { currentLocation, isLoading } = useLocation();
   useEffect(() => {
     if (isLoading || !currentLocation) {
@@ -47,19 +46,12 @@ export default function Home() {
           <Card variant="background" style={{ backgroundColor: currentColor }}>
             <div className="flex justify-between">
               <LocationHeader currentLocation={currentLocation} />
-              {!isLocationSelectOpen && (
-                <AITipButton
-                  currentWeather={weather.current}
-                  currentLocation={currentLocation}
-                />
-              )}
+              <AITipButton
+                currentWeather={weather.current}
+                currentLocation={currentLocation}
+              />
             </div>
-
-            {isLocationSelectOpen ? (
-              <LocationSelect />
-            ) : (
-              <CurrentWeather weather={weather} />
-            )}
+            <CurrentWeather weather={weather} />
           </Card>
           <HourlyForecast data={weather.hourly} />
           <DailyForecast data={weather.daily} />

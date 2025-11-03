@@ -1,13 +1,13 @@
 import { useUI } from "@/app/storage/UIContext";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function LocationHeader(currentLocation: {
   currentLocation: { city: string } | { city: "foo" };
 }) {
-  const { toggleLocationSelect, isLocationSelectOpen } = useUI();
   function locationMenuHandler(): void {
     navigator.vibrate(50);
-    toggleLocationSelect();
+    redirect("/city");
   }
   return (
     <>

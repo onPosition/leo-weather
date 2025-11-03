@@ -1,15 +1,32 @@
 import { CurrentLocation } from "@/app/lib/types";
 import { useRef, useState } from "react";
+import WeatherIcon from "./WeatherIcon";
+import getThemeByWeatherCode from "@/utils/getThemeByWeather";
 
 type FavItemProps = {
   location: CurrentLocation;
   onSelect: (loc: CurrentLocation) => void;
   onRemove: (loc: CurrentLocation) => void;
+  currentWeather?: {
+    temperature: number;
+    weatherCode: number;
+    timeStamp: string;
+  };
 };
 
-const FavItem = ({ location, onSelect, onRemove }: FavItemProps) => {
+const FavItem = ({
+  location,
+  currentWeather,
+  onSelect,
+  onRemove,
+}: FavItemProps) => {
   const [showIcon, setShowIcon] = useState(false);
   const timer = useRef<number | null>(null);
+
+  const currentColor = getThemeByWeatherCode(
+    currentWeather?.weatherCode || 1000,
+    currentWeather?.timeStamp || ""
+  );
 
   const startLong = () => {
     timer.current = window.setTimeout(() => setShowIcon(true), 500);
@@ -30,6 +47,7 @@ const FavItem = ({ location, onSelect, onRemove }: FavItemProps) => {
   return (
     <div
       className="p-4 bg-card-transparent rounded-2xl flex justify-between items-center select-none"
+      style={{ backgroundColor: currentColor }}
       onClick={() => {
         if (showIcon) {
           setShowIcon(false);
@@ -44,7 +62,7 @@ const FavItem = ({ location, onSelect, onRemove }: FavItemProps) => {
       onTouchEnd={cancelLong}
       onContextMenu={handleContextMenu} // десктопный сценарий
     >
-      <div className="flex-1 truncate text-center">
+      <div className="flex-1 truncate text-xl">
         {showIcon ? (
           <span
             className="text-red-500 m-auto  cursor-pointer transition-opacity duration-300 ease-in-out opacity-100"
@@ -57,8 +75,19 @@ const FavItem = ({ location, onSelect, onRemove }: FavItemProps) => {
             🗑️
           </span>
         ) : (
-          <span className="transition-opacity duration-300 ease-in-out opacity-100">
+          <span className="transition-opacity items-center flex justify-between duration-300 ease-in-out opacity-100">
             {location.city}
+            <div className="flex items-center gap-4">
+              <div className="w-12">
+                <WeatherIcon
+                  colored
+                  weatherCode={currentWeather?.weatherCode ?? 1001}
+                />
+              </div>
+              <p>
+                {currentWeather ? currentWeather.temperature.toFixed(0) : "—"}
+              </p>
+            </div>
           </span>
         )}
       </div>
