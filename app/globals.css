@@ -51,7 +51,7 @@ body {
 }
 .mobile-only {
   @media (min-width: 640px) {
-    max-width: 340px;
+    max-width: 450px;
     margin: 0 auto;
     background-color: #fff;
     border: 1px solid #8e8e8e;

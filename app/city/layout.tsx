@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function CityLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col h-dvh">
+    <div className="flex flex-col h-dvh mobile-only relative">
       <header className="py-4">
         <nav style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <Link href="/" className="absolute left-4 top-4">

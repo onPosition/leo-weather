@@ -75,20 +75,20 @@ const FavItem = ({
             🗑️
           </span>
         ) : (
-          <span className="transition-opacity items-center flex justify-between duration-300 ease-in-out opacity-100">
-            {location.city}
-            <div className="flex items-center gap-4">
-              <div className="w-12">
-                <WeatherIcon
-                  colored
-                  weatherCode={currentWeather?.weatherCode ?? 1001}
-                />
-              </div>
-              <p>
-                {currentWeather ? currentWeather.temperature.toFixed(0) : "—"}
-              </p>
+          <div className="grid grid-cols-[1fr_auto_auto] items-center gap-4 w-full text-white">
+            <p className="truncate text-left">{location.city}</p>
+            <div className="w-12 shrink-0">
+              <WeatherIcon
+                colored
+                weatherCode={currentWeather?.weatherCode ?? 1001}
+              />
             </div>
-          </span>
+            <p className="min-w-12 text-right">
+              {currentWeather
+                ? `${currentWeather.temperature.toFixed(0)}°`
+                : "—"}
+            </p>
+          </div>
         )}
       </div>
     </div>

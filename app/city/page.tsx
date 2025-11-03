@@ -93,9 +93,21 @@ export default function LocationSelect() {
     };
   }, [query]);
 
+  const CACHE_KEY = "weather_cache";
+  const CACHE_TTL = 60 * 60 * 1000;
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const { data, timestamp } = JSON.parse(cached);
+          if (Date.now() - timestamp < CACHE_TTL) {
+            setFavouriteWeatherData(data);
+            return;
+          }
+        }
+
         const weatherPromises = favourites.map(({ lat, lon }) =>
           fetch(`/api/weather?lat=${lat}&lon=${lon}`)
             .then((res) => res.json())
@@ -108,8 +120,16 @@ export default function LocationSelect() {
 
         const weatherData = await Promise.all(weatherPromises);
         setFavouriteWeatherData(weatherData);
+
+        localStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({
+            data: weatherData,
+            timestamp: Date.now(),
+          })
+        );
       } catch (error) {
-        console.error("Ошибка загрузки погоды:", error);
+        console.error("Oops...", error);
       }
     };
 
@@ -117,6 +137,7 @@ export default function LocationSelect() {
       fetchWeatherData();
     }
   }, [favourites]);
+
   return (
     <div className="flex items-center h-full flex-col gap-4 justify-between p-4">
       {favourites.length > 0 && (
