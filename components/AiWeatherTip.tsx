@@ -108,7 +108,7 @@ const AITipButton: React.FC<AITipButtonProps> = ({
           <Image src="/ai.svg" alt="AI" width={24} height={24} />
         )}
       </button>
-      {!showTooltip && <p>Click to get AI weather tip</p>}
+      {!showTooltip && <p>What to wear today?</p>}
       {showTooltip && (
         <>
           {isLoading && <p className="animate-pulse">Generating tip...</p>}
