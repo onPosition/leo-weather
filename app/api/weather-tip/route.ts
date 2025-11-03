@@ -17,9 +17,11 @@ export async function POST(request: Request) {
     if (!API_KEY) {
       return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
+    // const role = "helpful weather assistant";
     const role = "helpful weather assistant";
+    const language = "English";
     const prompt = `
-  You are ${role}. Give a short (1-2 sentences) piece of advice on what clothes to wear based on the weather in ${currentLocation.city}. Don't use markdown, just plain text. You can use emojis if you want.
+  You are ${role}. Give a short (1-2 sentences) piece of advice on what clothes to wear based on the weather in ${currentLocation.city}. Don't use markdown, just plain text. You can use emojis if you want Answer in following language: ${language}.
   - Temperature: ${weatherData.temperature}°C
   - Precipitation Probability: ${weatherData.precipitationProbability}%
   - Rain Intensity: ${weatherData.rainIntensity} (0 - no rain)

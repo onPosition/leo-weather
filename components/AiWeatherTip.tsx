@@ -87,17 +87,17 @@ const AITipButton: React.FC<AITipButtonProps> = ({
   };
 
   return (
-    <div className="relative flex items-center">
+    <div className="relative flex items-center mx-4 bg-linear-to-r from-purple-200 to-blue-200 rounded-4xl">
       <button
         onClick={handleGetTip}
         disabled={isLoading}
         className={`
-          relative flex h-8 w-8 items-center justify-center rounded-full 
+          relative flex h-8 min-w-8 items-center justify-center rounded-full 
           text-white shadow-lg transition-all duration-300
           bg-card-transparent 
           hover:shadow-xl hover:shadow-blue-500/50
           focus:outline-none focus:ring-4 focus:ring-blue-400/50
-          disabled:cursor-not-allowed disabled:opacity-70
+          disabled:cursor-not-allowed disabled:opacity-70 m-4
           ${isLoading ? "animate-pulse" : ""}
         `}
         aria-label="Get AI weather tip"
@@ -108,27 +108,23 @@ const AITipButton: React.FC<AITipButtonProps> = ({
           <Image src="/ai.svg" alt="AI" width={24} height={24} />
         )}
       </button>
-
+      {!showTooltip && <p>Click to get AI weather tip</p>}
       {showTooltip && (
-        <div
-          className="absolute top-0 right-0 z-10 mt-12 w-64 text-sm p-4 shadow-md bg-gray-800/50 backdrop-blur-lg rounded-4xl
-           
-          "
-        >
+        <>
           {isLoading && <p className="animate-pulse">Generating tip...</p>}
           {error && <p className="text-red-400">{error}</p>}
           {aiTip && (
             <>
-              <p>{aiTip}</p>
-              <button
+              <p className="text-gray-700 p-4 transition-transform">{aiTip}</p>
+              {/* <button
                 className="mt-2 m-auto w-fit bg-card-transparent py-1 px-4 rounded-xl"
                 onClick={() => setShowTooltip(false)}
               >
                 Got it
-              </button>
+              </button> */}
             </>
           )}
-        </div>
+        </>
       )}
     </div>
   );

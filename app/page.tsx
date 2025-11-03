@@ -15,6 +15,7 @@ import { useLocation } from "./storage/LocationContext";
 import { useUI } from "./storage/UIContext";
 import LoadingScreen from "@/components/LoadingScreen";
 import colorsByWeatherCode from "@/utils/getThemeByWeather";
+import { Menu } from "lucide-react";
 export default function Home() {
   const [weather, setWeather] = useState<TransformedWeather | null>(null);
   const { currentLocation, isLoading } = useLocation();
@@ -46,13 +47,16 @@ export default function Home() {
           <Card variant="background" style={{ backgroundColor: currentColor }}>
             <div className="flex justify-between">
               <LocationHeader currentLocation={currentLocation} />
-              <AITipButton
-                currentWeather={weather.current}
-                currentLocation={currentLocation}
-              />
+              <div className="w-8 h-8 flex items-center justify-center bg-card-transparent rounded-full">
+                <Menu className="h-4" />
+              </div>
             </div>
             <CurrentWeather weather={weather} />
           </Card>
+          <AITipButton
+            currentWeather={weather.current}
+            currentLocation={currentLocation}
+          />
           <HourlyForecast data={weather.hourly} />
           <DailyForecast data={weather.daily} />
           <SunArc forecast={weather.daily[0]} />
